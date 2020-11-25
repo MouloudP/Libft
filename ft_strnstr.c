@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 09:56:29 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 11:13:22 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/11/25 11:21:03 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 		while(s2[j] == s1[i + j])
 		{
 			if (s2[j + 1] == '\0')
-				return (s1 + i);
+				return (char *)(s1 + i);
 			j++;
 		}
 		i++;	

@@ -3,24 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahamdoun </var/mail/ahamdoun>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 10:15:26 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 12:16:19 by ahamdoun         ###   ########.fr       */
+/*   Created: 2020/11/25 11:57:08 by ahamdoun          #+#    #+#             */
+/*   Updated: 2020/11/25 11:57:34 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	num_len(int n)
+int		num_len(int n)
 {
-	int	len;
-
+	int		len;
 	len = 0;
 	if (n < 0)
 	{
 		n = n * -1;
-		len++;
+		len++;	
 	}
 	while (n > 0)
 	{
@@ -30,17 +29,8 @@ int	num_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoavalue(int n, char *str, int len)
 {
-	char	*str;
-	int	len;
-	int	copy;
-
-	copy = n;
-	len = num_len(copy);
-	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	str[len--] = '\0';
 	if (n == 0)
 	{
 		str[0] = '0';
@@ -58,4 +48,24 @@ char	*ft_itoa(int n)
 		len--;
 	}
 	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		len;
+	int		copy;
+
+	copy = n;
+	if (n == -2147483648)
+		len = 11;
+	else
+		len = num_len(copy);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	str[len--] = '\0';
+	if (n == -2147483648)
+	   return (str = "-2147483648\0");
+	else
+		return (ft_itoavalue(n, str, len));
 }

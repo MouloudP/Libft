@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 15:22:33 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 11:44:56 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/11/25 11:13:37 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 		cpy_dest[i] = cpy_src[i];
 		if (cpy_dest[i] == (unsigned char)c)
 			return ((void *)&cpy_dest[i + 1]);
+		i++;
 	}
 	return (NULL);
 }
