@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:28:56 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 12:04:46 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/11/25 12:14:18 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
 
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(const char *s);

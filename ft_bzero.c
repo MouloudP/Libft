@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 12:01:13 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 12:14:25 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/11/25 12:13:29 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*dest;
+	size_t i;
 
-	dest = (unsigned char *)s;
-	while (n > 0)
+	i = 0;
+	while (i < n)
 	{
-		*dest++ = '\0';
-		n--;
+		((char *)s)[i] = 0;
+		i++;
 	}
 }
