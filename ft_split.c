@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 21:00:23 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/20 12:36:06 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/10 14:23:45 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ int	ft_wordcount(const char *s, char c)
 			count++;
 		i++;
 	}
+	if (s[i-1] && s[i-1] != c)
+		count++;
 	return (count);
 }
 
-char	**ft_effect_split(char const *s, char c, char **tbl)
+char	**ft_effect_split(char const *s, char c, char **tbl, int word)
 {
 	int	i;
 	int	j;
@@ -37,13 +39,18 @@ char	**ft_effect_split(char const *s, char c, char **tbl)
 	i = 0;
 	j = 0;
 	count = 0;
-	while(s[i])
+	while(count < word)
 	{
-		if (s[i] == c)
+		if (s[i] == c || s[i] == '\0')
 		{
-			tbl[count][j] = '\0';
-			count++;
-			j = 0;
+			if (j)
+			{
+				tbl[count][j] = '\0';
+				count++;
+				j = 0;
+				if (s[i] == '\0')
+					break;
+			}
 		}
 		else
 		{
@@ -86,5 +93,5 @@ char	**ft_split(char const *s, char c)
 	if (!(s[i]))
 		if (!(tbl[j] = (char *)malloc(sizeof(char) * (count + 1))))
 			return (NULL);
-	return (ft_effect_split(s, c, tbl));
+	return (ft_effect_split(s, c, tbl, word));
 }
