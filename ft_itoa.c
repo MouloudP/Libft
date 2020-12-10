@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:10:04 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/25 12:10:10 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/10 11:26:36 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int		num_len(int n)
 	return (len);
 }
 
-char	*ft_itoavalue(int n, char *str, int len)
+char	*ft_itoavalue(unsigned int n, char *str, int len, int n2)
 {
 	if (n == 0)
 	{
 		str[0] = '0';
 		return (str);
 	}
-	if (n < 0)
+	if (n2 < 0)
 	{
 		str[0] = '-';
 		n = n * -1;
@@ -52,9 +52,9 @@ char	*ft_itoavalue(int n, char *str, int len)
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	int		copy;
+	char			*str;
+	int				len;
+	unsigned int	copy;
 
 	copy = n;
 	if (n == -2147483648)
@@ -64,8 +64,5 @@ char	*ft_itoa(int n)
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	str[len--] = '\0';
-	if (n == -2147483648)
-	   return (str = "-2147483648\0");
-	else
-		return (ft_itoavalue(n, str, len));
+	return (ft_itoavalue(copy, str, len, n));
 }
