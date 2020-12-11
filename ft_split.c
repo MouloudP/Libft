@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 21:00:23 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/12/10 14:23:45 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/11 11:09:07 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,23 @@ int	ft_wordcount(const char *s, char c)
 {
 	int count;
 	int i;
+	int car;
 
 	count = 0;
 	i = 0;
+	car = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
-			count++;
+		{
+			if (car)
+			{
+				count++;
+				car = 0;
+			}
+		}
+		else
+			car++;
 		i++;
 	}
 	if (s[i-1] && s[i-1] != c)
@@ -77,14 +87,17 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	count = 0;
-	while (s[i])
+	while (j < word && s[i])
 	{
 		if (s[i] == c)
-		{	
-			if (!(tbl[j] = (char *)malloc(sizeof(char) * (count + 1))))
-				return (NULL);
-			count = 0;
-			j++;
+		{
+			if (count)
+			{	
+				if (!(tbl[j] = (char *)malloc(sizeof(char) * (count + 1))))
+					return (NULL);
+				count = 0;
+				j++;
+			}
 		}
 		else
 			count++;
