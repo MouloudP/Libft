@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 11:36:29 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/12/12 11:36:35 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/12 11:49:53 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char			**ft_split(char const *str, char c)
 			count++;
 			str++;
 		}
-		if (!(tab[i] = ft_create_word((str - n), n)))
+		if (!(tab[i] = ft_create_word((str - count), count)))
 			return (ft_freetab(tab, i));
 		i++;
 	}
