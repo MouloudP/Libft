@@ -3,108 +3,90 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahamdoun </var/mail/ahamdoun>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/19 21:00:23 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/12/11 11:09:07 by ahamdoun         ###   ########.fr       */
+/*   Created: 2020/12/12 11:17:38 by ahamdoun          #+#    #+#             */
+/*   Updated: 2020/12/12 11:34:12 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_wordcount(const char *s, char c)
+static void		*ft_freetab(char **tab, size_t n)
 {
-	int count;
-	int i;
-	int car;
+	size_t		count;
 
 	count = 0;
-	i = 0;
-	car = 0;
-	while (s[i])
+	while (count < n)
 	{
-		if (s[i] == c)
-		{
-			if (car)
-			{
-				count++;
-				car = 0;
-			}
-		}
-		else
-			car++;
-		i++;
-	}
-	if (s[i-1] && s[i-1] != c)
+		free(tab[count]);
 		count++;
-	return (count);
-}
-
-char	**ft_effect_split(char const *s, char c, char **tbl, int word)
-{
-	int	i;
-	int	j;
-	int 	count;
-
-	i = 0;
-	j = 0;
-	count = 0;
-	while(count < word)
-	{
-		if (s[i] == c || s[i] == '\0')
-		{
-			if (j)
-			{
-				tbl[count][j] = '\0';
-				count++;
-				j = 0;
-				if (s[i] == '\0')
-					break;
-			}
-		}
-		else
-		{
-			tbl[count][j] = s[i];
-			j++;
-		}	
-		i++;
 	}
-	tbl[count] = NULL;
-	return (tbl);
+	free(tab);
+	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static size_t	ft_size_str(char const *str, char c)
 {
-	char	**tbl;
-	int	word;
-	int 	i;
-	int 	j;
-	int 	count;
+	size_t		size;
+	int			finish;
 
-	word = ft_wordcount(s, c);
-	if (!(tbl = (char **)malloc(sizeof(char *) * (word + 1))))
+	size = 0;
+	finish = 1;
+	if (!str)
+		return (size);
+	while (*str != '\0')
+	{
+		if (*str != c && finish)
+			size++;
+		finish = *str == c;
+		str++;
+	}
+	return (size);
+}
+
+static char		*ft_create_word(char const *str, size_t n)
+{
+	size_t		count;
+	char		*dest;
+
+	if (!(dest = malloc(sizeof(char) * (n + 1))))
+		return (NULL);
+	count = 0;
+	while (count < n)
+	{
+		dest[count] = str[count];
+		count++;
+	}
+	dest[count] = '\0';
+	return (dest);
+}
+
+char			**ft_split(char const *str, char c)
+{
+	char		**tab;
+	size_t		n;
+	size_t		count;
+	size_t		i;
+
+	n = ft_size_str(str, c);
+	if (!(tab = malloc(sizeof(char *) * (n + 1))))
 		return (NULL);
 	i = 0;
-	j = 0;
-	count = 0;
-	while (j < word && s[i])
+	while (i < n && str)
 	{
-		if (s[i] == c)
+		count = 0;
+		while (*str && *str == c)
+			str++;
+		while (*str && *str != c)
 		{
-			if (count)
-			{	
-				if (!(tbl[j] = (char *)malloc(sizeof(char) * (count + 1))))
-					return (NULL);
-				count = 0;
-				j++;
-			}
-		}
-		else
 			count++;
+			str++;
+		}
+		if (!(tab[i] = ft_create_word((str - n), n)))
+			return (ft_freetab(tab, i));
 		i++;
 	}
-	if (!(s[i]))
-		if (!(tbl[j] = (char *)malloc(sizeof(char) * (count + 1))))
-			return (NULL);
-	return (ft_effect_split(s, c, tbl, word));
+	tab[n] = NULL;
+	return (tab);
 }
