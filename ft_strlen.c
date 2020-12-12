@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 15:50:55 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 11:59:02 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/12 10:54:54 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ size_t	ft_strlen(const char *s)
 	count = 0;
 	while (s[count])
 		count++;
-	return(count);
+	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 11:36:14 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 11:58:18 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/12 10:56:42 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 		size_s--;
 	str_result = ft_substr((char *)s1, 0, size_s + 1);
 	return (str_result);
-
 }

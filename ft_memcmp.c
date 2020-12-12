@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 10:14:10 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 12:00:00 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/12 10:52:28 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		n--;
 		cpy_s1++;
 		cpy_s2++;
-
 	}
 	return (0);
 }

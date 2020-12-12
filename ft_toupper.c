@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 16:10:09 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/16 16:12:11 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/12 10:56:58 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_toupper(int c)
 {
 	if (ft_islower(c))
-		c = c- 32;
+		c = c - 32;
 	return (c);
 }

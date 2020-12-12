@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 10:04:02 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/11/23 11:56:39 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/12 10:51:37 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return ((void *)cpy_s + i);
 		i++;
 	}
-	return (NULL);	
+	return (NULL);
 }
