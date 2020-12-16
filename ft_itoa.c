@@ -6,7 +6,7 @@
 /*   By: ahamdoun <ahamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:10:04 by ahamdoun          #+#    #+#             */
-/*   Updated: 2020/12/12 10:51:10 by ahamdoun         ###   ########.fr       */
+/*   Updated: 2020/12/16 10:52:38 by ahamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char	*ft_itoa(int n)
 	copy = n;
 	if (n == -2147483648)
 		len = 11;
+	else if (n == 0)
+		len = 1;
 	else
 		len = num_len(copy);
 	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
